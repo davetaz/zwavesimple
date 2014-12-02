@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function getDevices() {
-	$.getJSON(baseurl + "?command=devices")
+	$.getJSON(baseurl + "?command=devices&code" + getParameterByName('code'))
 	.done(function(data) {
 		for (i=0;i<data.length;i++) {
 			drawDevice(data[i]);
@@ -44,7 +44,7 @@ function doCommand(command,id,type) {
 	if (command == "on") {
 		level = 100;
 	}
-	$.post("manage.php", { "command": "control", "node": id, "type": type, "level": level })
+	$.post("manage.php", { "command": "control", "node": id, "type": type, "level": level, "code": getParameterByName('code') })
         .done(function(data) {
 		console.log(data);
 	})
