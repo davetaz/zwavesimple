@@ -4,6 +4,8 @@
 	
 	$command = $_GET["command"];
 	if (!$command) $command = $_POST["command"];
+	$code = $_GET["code"];
+	if (!$code) $code = $_POST["code"];
 	$deviceID = $_POST["id"];
 	$level = $_POST["level"];
 	$type = $_POST["type"];
@@ -17,14 +19,14 @@
 		
 	$config = file_get_contents("config.json");
 	$config = json_decode($config,true);
-/*	
+	
 	$code = $_POST["code"];
 	if ($code != $config["code"])	{
 		http_response_code(403);
 		echo "403 Forbidden";
 		exit();
 	}
-*/
+
 	if ($command == "devices") {
 		echo getDevices();
 		exit();
