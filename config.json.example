@@ -1,0 +1,21 @@
+{
+    "code": "dsadsdsa",
+    "devices": [
+        {
+            "id": 2,
+            "name": "Light dimmer"
+        },
+        {
+            "id": 3,
+            "name": "not in use"
+        },
+        {
+            "id": 4,
+            "name": "Xmas tree"
+        },
+        {
+            "id": 5,
+            "name": "Shed and Pond"
+        }
+    ]
+}

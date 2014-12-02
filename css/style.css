@@ -1,0 +1,10 @@
+h1 {
+	display: inline-block;
+	padding-left: 20px;
+}
+.tog {
+	right: 20px;
+	padding-top: 10px;
+	width: 110px;
+	height: 48px;
+}
