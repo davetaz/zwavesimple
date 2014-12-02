@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function getDevices() {
-	$.getJSON(baseurl + "?command=devices&code" + getParameterByName('code'))
+	$.getJSON(baseurl + "?command=devices&code=" + getParameterByName('code'))
 	.done(function(data) {
 		for (i=0;i<data.length;i++) {
 			drawDevice(data[i]);
