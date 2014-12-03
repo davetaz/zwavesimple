@@ -16,4 +16,6 @@ While you are in config.json you can add all the names for your devices if you n
 
 To use the library simply host it on the same device as your zwave controller with lightscontrol and point your browser at http://your-pi/wherever-you-put-it/?code=CHANGEME
 
-Security is your problem not mine! 
+On an apple device the app is best used when you add it to your homescreen, this way it will stand alone outside of your browser and have a nice icon. It will look like an app! 
+
+Security is your problem not mine!
