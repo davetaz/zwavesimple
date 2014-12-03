@@ -1,21 +1,18 @@
-{
-    "code": "dsadsdsa",
-    "devices": [
+[
         {
             "id": 2,
             "name": "Light dimmer"
         },
         {
             "id": 3,
-            "name": "not in use"
+            "name": "Cupboard Light"
         },
         {
             "id": 4,
-            "name": "Xmas tree"
+            "name": "Front Lights"
         },
         {
             "id": 5,
             "name": "Shed and Pond"
         }
-    ]
-}
+]

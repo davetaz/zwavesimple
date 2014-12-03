@@ -1,12 +1,12 @@
 <?php
 
 	error_reporting(E_ALL ^ E_NOTICE);
-	
-	$command = $_GET["command"];
-	if (!$command) $command = $_POST["command"];
+
 	$code = $_GET["code"];
-	if (!$code) $code = $_POST["code"];
-	$deviceID = $_POST["id"];
+	if ($code == "") $code = $_POST["code"];
+	$command = $_GET["command"];
+	if ($command == "") $command = $_POST["command"];
+	$deviceID = $_POST["node"];
 	$level = $_POST["level"];
 	$type = $_POST["type"];
 
@@ -17,10 +17,9 @@
 	$type = "Binary Power Switch";
 */
 		
-	$config = file_get_contents("config.json");
+	$config = file_get_contents("/home/davetaz/code.json");
 	$config = json_decode($config,true);
-	
-	$code = $_POST["code"];
+
 	if ($code != $config["code"])	{
 		http_response_code(403);
 		echo "403 Forbidden";
@@ -39,14 +38,15 @@
 	echo "400 Bad Request";
 	exit();
 
-function doControl($deviceID,$level,$type) {
+function doControl($device,$level,$type) {
 	
-	$url = "http://localhost/server.php?command=control&node=" . $deviceID . "&type=" . urlencode($type) . "&level=" . $level;
+	$url = "http://localhost/server.php?command=control&node=" . $device . "&type=" . rawurlencode($type) . "&level=" . $level;
 
 	$content = file_get_contents($url);
+	echo $content;
 	$res = getLevelResponse($content);
 	if ($res == $level) {
-		echo "OK";
+		echo "OK" . $url;
 	} else {
 		http_response_code(500);
 		echo "Internal server error";
@@ -69,8 +69,7 @@ function getLevelResponse($content) {
 }
 
 function getDevices() {
-	//$stuff = file_get_contents("http://localhost/server.php?command=devices");
-	$stuff = file_get_contents("testdata/devices_4on.out");
+	$stuff = file_get_contents("http://localhost/server.php?command=devices");
 	$devices_raw = explode("\n",$stuff);
 	for($i=0;$i<count($devices_raw);$i++) {
 		$devices[] = getDeviceData($devices_raw[$i]);
